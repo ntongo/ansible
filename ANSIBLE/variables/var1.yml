@@ -1,0 +1,17 @@
+---
+-  name: tasks file for Variables
+   hosts: all
+   become: true
+   tasks:
+      - name: Create UCD group
+        become: true
+        group:
+          name: "JJTechGroup"
+          system: true
+
+      - name: Create UCD user
+        become: true
+        user:
+          name: "JJTechUser"
+          group: "JJTechGroup"
+          system: true

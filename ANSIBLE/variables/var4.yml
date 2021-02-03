@@ -1,0 +1,21 @@
+---
+-  name: tasks file for variables
+   hosts: all
+   become: true
+   # Variables used in this playbook
+   vars_files:
+      - /home/ubuntu/external_vars.yml
+
+   tasks:
+      - name: Create UCD group
+        become: true
+        group:
+          name: "{{ ucd_group }}"
+          system: true
+
+      - name: Create UCD user
+        become: true
+        user:
+          name: "{{ ucd_user }}"
+          group: "{{ ucd_group }}"
+          system: true
